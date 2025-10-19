@@ -1,0 +1,1374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoMine Pro - Advanced Cloud Mining Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0A0E17;
+            --text-primary: #FFFFFF;
+            --text-secondary: #B0B7C3;
+            --card-bg: #131A29;
+            --footer-bg: #050811;
+            --rainbow: linear-gradient(90deg, #FF3CAC, #784BA0, #2B86C5, #43CBFF);
+            --rainbow-reverse: linear-gradient(90deg, #43CBFF, #2B86C5, #784BA0, #FF3CAC);
+            --rainbow-vertical: linear-gradient(180deg, #FF3CAC, #784BA0, #2B86C5, #43CBFF);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.4s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(10, 14, 23, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+            padding: 15px 0;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+
+        nav a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        nav a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--rainbow);
+            transition: width 0.3s;
+        }
+
+        nav a:hover:after {
+            width: 100%;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--rainbow);
+            color: white;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-primary:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--rainbow-reverse);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+
+        .btn-primary:hover:before {
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 60, 172, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-primary);
+            border: 2px solid transparent;
+            border-image: var(--rainbow);
+            border-image-slice: 1;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 200px 0 120px;
+            background: linear-gradient(rgba(10, 14, 23, 0.85), rgba(10, 14, 23, 0.95)), url('https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 25px;
+            line-height: 1.2;
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px rgba(255, 60, 172, 0.5);
+            }
+            to {
+                text-shadow: 0 0 20px rgba(67, 203, 255, 0.7), 0 0 30px rgba(67, 203, 255, 0.5);
+            }
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-secondary);
+            max-width: 750px;
+            margin: 0 auto 50px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: var(--rainbow);
+            border-radius: 50%;
+            opacity: 0.1;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+            }
+        }
+
+        /* Features Section */
+        .section {
+            padding: 120px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-title h2 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--rainbow);
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .feature-card {
+            background: var(--card-bg);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .feature-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--rainbow);
+            z-index: 2;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            position: relative;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .feature-icon:before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: var(--rainbow);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .feature-card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 20px;
+        }
+
+        .feature-card p {
+            color: var(--text-secondary);
+        }
+
+        /* App Section */
+        .app-section {
+            background: var(--card-bg);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .app-container {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .app-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .app-image img {
+            max-width: 320px;
+            border-radius: 40px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+            animation: float-phone 4s ease-in-out infinite;
+        }
+
+        @keyframes float-phone {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .app-content {
+            flex: 1;
+        }
+
+        .app-content h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .app-content p {
+            color: var(--text-secondary);
+            margin-bottom: 35px;
+            font-size: 1.1rem;
+        }
+
+        .app-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        /* Plans Section */
+        .plans {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .plan-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            padding: 50px 35px;
+            text-align: center;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .plan-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .plan-card.popular {
+            border: 3px solid transparent;
+            border-image: var(--rainbow);
+            border-image-slice: 1;
+            transform: scale(1.05);
+        }
+
+        .plan-card.popular:hover {
+            transform: scale(1.05) translateY(-15px);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: 25px;
+            right: -35px;
+            background: var(--rainbow);
+            color: white;
+            padding: 8px 45px;
+            transform: rotate(45deg);
+            font-size: 0.9rem;
+            font-weight: 700;
+        }
+
+        .plan-name {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .plan-price {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .plan-profit {
+            font-size: 1.2rem;
+            color: #4ADE80;
+            margin-bottom: 25px;
+            font-weight: 600;
+        }
+
+        .plan-features {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+
+        .plan-features li {
+            padding: 12px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .plan-features li:last-child {
+            border-bottom: none;
+        }
+
+        .plan-features li i {
+            color: #4ADE80;
+            margin-right: 10px;
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--rainbow);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1639322537228-f710d846310a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80') no-repeat center center/cover;
+            opacity: 0.1;
+        }
+
+        .stats-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .stat-item h3 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+
+        .stat-item p {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        /* How It Works */
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            gap: 40px;
+            margin-top: 60px;
+            position: relative;
+        }
+
+        .steps:before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 10%;
+            width: 80%;
+            height: 3px;
+            background: var(--rainbow);
+            z-index: -1;
+        }
+
+        .step {
+            text-align: center;
+            flex: 1;
+            position: relative;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--card-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            border: 3px solid transparent;
+            background-clip: padding-box;
+        }
+
+        .step-number:before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            background: var(--rainbow);
+            border-radius: 50%;
+            z-index: -1;
+        }
+
+        .step h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .step p {
+            color: var(--text-secondary);
+        }
+
+        /* Partners */
+        .partners {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .partner-logo {
+            filter: grayscale(1);
+            opacity: 0.7;
+            transition: all 0.4s ease;
+            text-align: center;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+            transform: translateY(-10px);
+        }
+
+        .partner-logo i {
+            font-size: 3.5rem;
+            background: var(--rainbow);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .partner-logo p {
+            font-weight: 600;
+        }
+
+        /* Blog Section */
+        .blog-posts {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-15px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-image {
+            height: 220px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .blog-image:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(transparent, var(--card-bg));
+        }
+
+        .blog-content {
+            padding: 30px;
+        }
+
+        .blog-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .blog-content p {
+            color: var(--text-secondary);
+            margin-bottom: 25px;
+        }
+
+        .blog-link {
+            color: #43CBFF;
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .blog-link:hover {
+            color: #FF3CAC;
+            gap: 12px;
+        }
+
+        /* Support Section */
+        .support {
+            text-align: center;
+            background: var(--card-bg);
+            padding: 100px 0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .support:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--rainbow);
+        }
+
+        .support h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+        }
+
+        .support p {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 40px;
+            font-size: 1.1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--footer-bg);
+            padding: 100px 0 40px;
+            position: relative;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 50px;
+            margin-bottom: 60px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 25px;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .footer-about p {
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: var(--text-primary);
+            transition: all 0.4s ease;
+            text-decoration: none;
+        }
+
+        .social-links a:hover {
+            background: var(--rainbow);
+            transform: translateY(-5px);
+        }
+
+        .footer-links h3 {
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .footer-links h3:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--rainbow);
+            border-radius: 2px;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--text-primary);
+            padding-left: 8px;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 1100px) {
+            .steps:before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .app-container {
+                flex-direction: column;
+            }
+            
+            .steps {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .plan-card.popular {
+                transform: scale(1);
+            }
+            
+            .plan-card.popular:hover {
+                transform: scale(1) translateY(-15px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: var(--card-bg);
+                padding: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .mobile-menu {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-server logo-icon"></i>
+                <span>CryptoMine Pro</span>
+            </a>
+            
+            <nav id="nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#plans">Mining Plans</a></li>
+                    <li><a href="#profit">Cloud Profit</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#support">Support</a></li>
+                </ul>
+            </nav>
+            
+            <a href="#" class="btn btn-primary">Start Mining</a>
+            
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="floating-elements" id="floatingElements"></div>
+        <div class="container">
+            <h1 class="fade-in">Discover The Power of Cloud Mining</h1>
+            <p class="fade-in delay-1">Invest in blockchain safely and easily with the latest managed mining technologies. Start your journey towards sustainable cryptocurrency profits today.</p>
+            <div class="hero-buttons fade-in delay-2">
+                <a href="#" class="btn btn-primary">Start Mining Now</a>
+                <a href="#" class="btn btn-secondary">Learn How It Works</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Us?</h2>
+                <p>We provide the best cloud mining solutions with guaranteed security and high performance</p>
+            </div>
+            
+            <div class="features">
+                <div class="feature-card fade-in">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Guaranteed Stable Returns</h3>
+                    <p>Start with a small amount and benefit from daily mining profits with guaranteed return stability in the long term.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-1">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Complete Security & Protection</h3>
+                    <p>Encrypted servers and complete protection of your data with advanced security systems to protect your investment.</p>
+                </div>
+                
+                <div class="feature-card fade-in delay-2">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Latest Mining Technologies</h3>
+                    <p>Advanced infrastructure with high performance and low energy consumption to achieve maximum efficiency.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- App Section -->
+    <section class="section app-section">
+        <div class="container app-container">
+            <div class="app-image">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=600&q=80" alt="Mining App">
+            </div>
+            
+            <div class="app-content">
+                <h2>Control Mining Operations From Anywhere</h2>
+                <p>Download our app to track profits moment by moment, control your mining plans, and get instant notifications about investment performance.</p>
+                <div class="app-buttons">
+                    <a href="#" class="btn btn-primary">
+                        <i class="fab fa-google-play"></i>
+                        Download for Android
+                    </a>
+                    <a href="#" class="btn btn-secondary">
+                        <i class="fab fa-apple"></i>
+                        Download for iOS
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Plans Section -->
+    <section class="section" id="plans">
+        <div class="container">
+            <div class="section-title">
+                <h2>Choose Your Mining Plan</h2>
+                <p>Flexible plans suitable for all investors from beginners to professionals</p>
+            </div>
+            
+            <div class="plans">
+                <div class="plan-card fade-in">
+                    <div class="plan-name">Beginner</div>
+                    <div class="plan-price">$250</div>
+                    <div class="plan-profit">Daily Profit: $200-400</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Mining Power: 750 GH/s</li>
+                        <li><i class="fas fa-check"></i> Duration: 3 Days</li>
+                        <li><i class="fas fa-check"></i> 24/7 Technical Support</li>
+                        <li><i class="fas fa-check"></i> Daily Performance Reports</li>
+                        <li><i class="fas fa-check"></i> Basic Analytics</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start Now</a>
+                </div>
+                
+                <div class="plan-card popular fade-in delay-1">
+                    <div class="popular-badge">MOST POPULAR</div>
+                    <div class="plan-name">Advanced</div>
+                    <div class="plan-price">$500</div>
+                    <div class="plan-profit">Daily Profit: $1400-2500</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Mining Power: 1200 GH/s</li>
+                        <li><i class="fas fa-check"></i> Duration: 7 Days</li>
+                        <li><i class="fas fa-check"></i> 24/7 Technical Support</li>
+                        <li><i class="fas fa-check"></i> Daily Performance Reports</li>
+                        <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                        <li><i class="fas fa-check"></i> Priority Support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Start Mining</a>
+                </div>
+                
+                <div class="plan-card fade-in delay-2">
+                    <div class="plan-name">Professional</div>
+                    <div class="plan-price">$1000</div>
+                    <div class="plan-profit">Daily Profit: $2500-4000</div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Mining Power: 2500 GH/s</li>
+                        <li><i class="fas fa-check"></i> Duration: 10 Days</li>
+                        <li><i class="fas fa-check"></i> 24/7 Technical Support</li>
+                        <li><i class="fas fa-check"></i> Daily Performance Reports</li>
+                        <li><i class="fas fa-check"></i> Advanced Analytics</li>
+                        <li><i class="fas fa-check"></i> Digital Wallet Management</li>
+                        <li><i class="fas fa-check"></i> VIP Support</li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Invest Now</a>
+                </div>
+            </div>
+            
+            <p style="text-align: center; margin-top: 50px; color: var(--text-secondary);">
+                All plans include hardware maintenance and daily performance updates.
+            </p>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="container stats-container">
+            <div class="stat-item">
+                <h3>125,300+</h3>
+                <p>Total Users</p>
+            </div>
+            
+            <div class="stat-item">
+                <h3>2,780 BTC</h3>
+                <p>Total Profits Paid</p>
+            </div>
+            
+            <div class="stat-item">
+                <h3>1200 GH/s</h3>
+                <p>Average Power Used</p>
+            </div>
+            
+            <div class="stat-item">
+                <h3>99.8%</h3>
+                <p>Platform Uptime</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Your Mining Journey Starts in Three Steps</h2>
+                <p>A simple and straightforward process to start earning profits from cloud mining</p>
+            </div>
+            
+            <div class="steps">
+                <div class="step fade-in">
+                    <div class="step-number">1</div>
+                    <h3>Register Your Account</h3>
+                    <p>Create your account in minutes with full verification for protection and security.</p>
+                </div>
+                
+                <div class="step fade-in delay-1">
+                    <div class="step-number">2</div>
+                    <h3>Choose Mining Plan</h3>
+                    <p>Choose from our diverse plans that suit your budget and investment goals.</p>
+                </div>
+                
+                <div class="step fade-in delay-2">
+                    <div class="step-number">3</div>
+                    <h3>Start Earning Daily Profits</h3>
+                    <p>Watch your profits grow daily with detailed reports on investment performance.</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 70px;">
+                <a href="#" class="btn btn-primary">Start Now For Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Success Partners</h2>
+                <p>We work with the world's leading companies in the field of mining and cryptocurrencies</p>
+            </div>
+            
+            <div class="partners">
+                <div class="partner-logo">
+                    <i class="fab fa-bitcoin"></i>
+                    <p>Binance Cloud</p>
+                </div>
+                
+                <div class="partner-logo">
+                    <i class="fas fa-server"></i>
+                    <p>GoMining</p>
+                </div>
+                
+                <div class="partner-logo">
+                    <i class="fas fa-cube"></i>
+                    <p>Bitmain</p>
+                </div>
+                
+                <div class="partner-logo">
+                    <i class="fas fa-network-wired"></i>
+                    <p>NiceHash</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section class="section" id="blog">
+        <div class="container">
+            <div class="section-title">
+                <h2>Latest Articles</h2>
+                <p>Stay updated with the latest developments in the world of mining and cryptocurrencies</p>
+            </div>
+            
+            <div class="blog-posts">
+                <div class="blog-card fade-in">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1621761191311-c6d8deaef0ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="blog-content">
+                        <h3>What is Cloud Mining?</h3>
+                        <p>A comprehensive guide to understanding cloud mining and how you can start making profits from it.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card fade-in delay-1">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1621761191311-c6d8deaef0ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="blog-content">
+                        <h3>Best Ways to Increase Profits</h3>
+                        <p>Proven strategies to increase your returns from cloud mining and maximize benefits.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+                
+                <div class="blog-card fade-in delay-2">
+                    <div class="blog-image" style="background-image: url('https://images.unsplash.com/photo-1621761191311-c6d8deaef0ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');"></div>
+                    <div class="blog-content">
+                        <h3>How to Protect Your Digital Wallet</h3>
+                        <p>Essential security tips to protect your digital investments from risks and threats.</p>
+                        <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 60px;">
+                <a href="#" class="btn btn-secondary">Read More Articles</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section class="section" id="support">
+        <div class="container">
+            <div class="support">
+                <h2>Have a Question or Problem?</h2>
+                <p>We are here to serve you 24/7. Our technical support team is ready to answer all your inquiries and help you solve any problem you face.</p>
+                <a href="#" class="btn btn-primary">Contact Us Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-server logo-icon"></i>
+                        <span>CryptoMine Pro</span>
+                    </div>
+                    <p>We provide secure and advanced cloud mining solutions to our customers around the world, ensuring the highest standards of quality and security.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-discord"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>About Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Team</a></li>
+                        <li><a href="#">Certifications</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Terms & Policies</h3>
+                    <ul>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Terms & Conditions</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>My Account</h3>
+                    <ul>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Create Account</a></li>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Technical Support</a></li>
+                        <li><a href="#">Complaints & Suggestions</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>© 2025 CryptoMine Pro – All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const nav = document.getElementById('nav');
+        
+        mobileMenu.addEventListener('click', function() {
+            nav.classList.toggle('active');
+        });
+
+        // Create floating elements
+        const floatingElements = document.getElementById('floatingElements');
+        for (let i = 0; i < 15; i++) {
+            const element = document.createElement('div');
+            element.classList.add('floating-element');
+            
+            const size = Math.random() * 60 + 20;
+            const left = Math.random() * 100;
+            const animationDuration = Math.random() * 20 + 10;
+            const animationDelay = Math.random() * 5;
+            
+            element.style.width = `${size}px`;
+            element.style.height = `${size}px`;
+            element.style.left = `${left}%`;
+            element.style.animationDuration = `${animationDuration}s`;
+            element.style.animationDelay = `${animationDelay}s`;
+            
+            floatingElements.appendChild(element);
+        }
+
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInOnScroll = function() {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('fade-in');
+                }
+            });
+        };
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        fadeInOnScroll(); // Initial check
+    </script>
+</body>
+</html>
